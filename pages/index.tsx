@@ -5,14 +5,14 @@ import { useAuthState, useSignInWithGoogle, useSignOut } from 'react-firebase-ho
 // import styles from '../styles/Home.module.css'
 
 import styled from 'styled-components';
-import InformationCard from '../components/InformationCard';
-import RSVPEditor from '../components/RSVPEditor';
-import RSVPResults from '../components/RSVPResults';
 import { auth } from '../firebase/clientApp';
+import RSVPWedding from '../components/RSVPWedding';
+import RSVPResultsWedding from '../components/RSVPResultsWedding';
 
 const admins = [
   'agrawal.nehal2810@gmail.com',
-  'rite2yash@gmail.com'
+  'rite2yash@gmail.com',
+  // 'dkaushik95@gmail.com',
 ]
 
 export default function Home() {
@@ -33,10 +33,10 @@ export default function Home() {
       <HeroImage
           width={800}
           height={600}
-          src='/images/party-background.jpg'
+          src='/images/wedding-invitation.jpg'
           alt='Image'
         />
-      <InformationCard />
+      {/* <InformationCard /> */}
       {loading && (
         <Button>Loading</Button>
       )}
@@ -50,13 +50,13 @@ export default function Home() {
         <>
           {!admins.includes(`${user.email}`) && (
             <>
-              <RSVPEditor />
+              <RSVPWedding />
               <Button secondary onClick={logout}>Log out</Button>
             </>
           )}
           {admins.includes(`${user.email}`) && (
             <>
-              <RSVPResults />
+              <RSVPResultsWedding />
               <Button secondary onClick={logout}>Log out</Button>
             </>
           )}
@@ -85,7 +85,11 @@ const AppContainer = styled.div`
 `;
 
 const HeroImage = styled(Image)`
+  @media screen and (min-width:800px) {
+    width: 40%;
+  }
   width: 90%;
+  height: max-content;
   object-fit: cover;
   object-position: center;
   border: 1px solid #555;
