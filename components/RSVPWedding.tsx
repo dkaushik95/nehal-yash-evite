@@ -77,7 +77,7 @@ const RSVPWedding = () => {
 
       {(currentResponse === 'yes' || currentResponse === 'maybe') && (
         <div>
-          <h2>Please select the days that you can make it</h2>
+          <h2>Please select the days you can make it</h2>
           <CheckboxGroup>
             <label>
               <input type='checkbox' name='reception' checked={currentData?.reception} onChange={() => handleChange('reception')} />
